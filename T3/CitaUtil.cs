@@ -8,7 +8,7 @@ namespace T3
 {
     public class CitaUtil
     {
-        public void Crear(Cita[] citas, ref int indice) {
+        public static void Crear(Cita[] citas, ref int indice) {
             Console.WriteLine("Llene los siguientes datos a continuacion.");
             Console.Write("Numero de cita: ");
             int numero = int.Parse(Console.ReadLine());

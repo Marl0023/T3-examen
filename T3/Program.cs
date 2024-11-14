@@ -1,11 +1,13 @@
 ﻿using T3;
+
 bool salir = false;
 do
 {
-    
-
     Console.ForegroundColor = ConsoleColor.Black;
     Console.BackgroundColor = ConsoleColor.White;
+    Cita[] citas = new Cita[0];
+    int cantidadCitas = 0;
+
     Console.WriteLine("\n");
     Console.WriteLine("*****************************************");
     Console.WriteLine("1- Crear Cita");
@@ -15,22 +17,23 @@ do
     Console.WriteLine("*****************************************");
     Console.WriteLine("\n");
     Console.WriteLine("Ingrese que opcion desea ingresar primero: ");
-    byte opc = byte.Parse(Console.ReadLine());
     Console.ResetColor();
-    switch (opc)
-    {
-        case 1:
 
+    byte opc = byte.Parse(Console.ReadLine());
+    switch (opc) {
+        case 1:
+            Array.Resize(ref citas,citas.Length+1);
+            CitaUtil.Crear(citas, ref cantidadCitas);
             break;
         case 2:
-            
+            CitaUtil.Listar(citas, cantidadCitas);
             break;
         case 3:
-            Console.ForegroundColor= ConsoleColor.Yellow;
             Console.Write("Ingrese el texto a buscar en las universidades: ");
             string texto = Console.ReadLine();
             Console.Write("Ingrese el nuevo texto: ");
-            Console.ResetColor();
+            string textoNuevo = Console.ReadLine();
+            CitaUtil.ModifMasUni(citas, cantidadCitas, texto, textoNuevo);
             break;
         case 4:
             salir = true;

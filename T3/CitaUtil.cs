@@ -8,7 +8,7 @@ namespace T3
 {
     public class CitaUtil
     {
-        public void CrearCita(Cita[] cita, ref int indice) {
+        public void Crear(Cita[] citas, ref int indice) {
             Console.WriteLine("Llene los siguientes datos a continuacion.");
             Console.Write("Numero de cita: ");
             int numero = int.Parse(Console.ReadLine());
@@ -26,6 +26,30 @@ namespace T3
             citas[indice] = new Cita(numero, estudiante, enfermedad, precio);
             indice++;
         }
+        public static void Listar(Cita[] citas, int cantidadCitas)
+        {
+            double sumaPrecios = 0;
+            Console.WriteLine("Listado de Citas:");
+            for (int i = 0; i < cantidadCitas; i++)
+            {
+                Console.WriteLine(citas[i].ToString());
+                sumaPrecios += citas[i].Precio;
+            }
+            Console.WriteLine($"Suma total de precios: {sumaPrecios:C}\n");
+        }
+        public static void ModifMasUni(Cita[] citas, int cantidadCitas, string texto, string textoNuevo)
+        {
+            for (int i = 0; i < cantidadCitas; i++)
+            {
+                if (citas[i].Estudiante.Universidad.Contains(texto))
+                {
+                    citas[i].Estudiante.Universidad = citas[i].Estudiante.Universidad.Replace(texto, textoNuevo);
+                }
+            }
+            Console.WriteLine("Modificacion masiva realizada.");
+        }
+
+
 
     }
 }

@@ -13,6 +13,7 @@ do
     byte opc = byte.Parse(Console.ReadLine());
     switch (opc) {
         case 1:
+            
             break;
         case 2:
             break;
